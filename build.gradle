@@ -3,7 +3,7 @@ buildscript {
     ext.kotlin_version = "1.4.32"
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.0'
@@ -17,8 +17,16 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
+}
+
+ext {
+    dagger_dependecy = "com.google.dagger:dagger:"
+    dagger_compiler = "com.google.dagger:dagger-compiler:"
+
+    dagger_dependecy_version = "2.35.1"
+    dagger_compiler_version = "2.9"
 }
 
 task clean(type: Delete) {
