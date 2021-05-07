@@ -1,0 +1,5 @@
+include ':presentation'
+include ':domain'
+include ':app'
+rootProject.name = "Chuck Norris Facts"
+include ':data'
