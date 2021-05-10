@@ -5,5 +5,5 @@ import rx.Observable
 
 interface IJokesRepository {
 
-    fun getRandomJoke(category: String? = null): Observable<JokeBo>
+    fun getRandomJoke(category: String?): Observable<JokeBo>
 }
