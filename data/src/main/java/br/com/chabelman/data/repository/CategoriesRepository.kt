@@ -1,14 +1,15 @@
 package br.com.chabelman.data.repository
 
 import br.com.chabelman.data.remote.CategoriesApi
+import br.com.chabelman.domain.repository.ICategoriesRepository
 import rx.Observable
 import javax.inject.Inject
 
 class CategoriesRepository @Inject constructor(
-    val categoriesApi: CategoriesApi
-) {
+    private val categoriesApi: CategoriesApi
+): ICategoriesRepository {
 
-    fun getCategories(): Observable<List<String>> {
+    override fun getCategories(): Observable<List<String>> {
         return categoriesApi.getCategoriesList()
     }
 }
