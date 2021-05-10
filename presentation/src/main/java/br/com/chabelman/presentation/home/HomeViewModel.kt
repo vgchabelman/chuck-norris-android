@@ -1,6 +1,7 @@
 package br.com.chabelman.presentation.home
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.chabelman.domain.model.JokeBo
@@ -11,8 +12,10 @@ import rx.schedulers.Schedulers
 import javax.inject.Inject
 
 class HomeViewModel: ViewModel() {
-    @Inject lateinit var jokeInteractor: JokeInteractor
-    @Inject lateinit var categoriesInteractor: CategoryInteractor
+    @Inject
+    lateinit var jokeInteractor: JokeInteractor
+    @Inject
+    lateinit var categoriesInteractor: CategoryInteractor
 
     val randomJokeBo: MutableLiveData<JokeBo> by lazy { MutableLiveData() }
 

@@ -1,4 +1,4 @@
-package br.com.chabelman.data.remote
+package br.com.chabelman.chucknorrisfacts.di
 
 import br.com.chabelman.data.BASE_URL
 import com.google.gson.Gson
