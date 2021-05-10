@@ -25,6 +25,9 @@ ext {
     dagger_dependecy_version = "2.35.1"
     dagger_compiler_version = "2.9"
     retrofit_version = "2.9.0"
+
+    androidx_lifecycle = "2.3.1"
+    androidx_navigation = "2.3.5"
 }
 
 task clean(type: Delete) {
