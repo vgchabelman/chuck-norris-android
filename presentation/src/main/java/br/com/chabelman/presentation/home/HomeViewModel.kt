@@ -24,7 +24,7 @@ class HomeViewModel: ViewModel() {
             jokeInteractor.getRandomJoke()
                 .subscribeOn(Schedulers.io())
                 .subscribe { jokeBo ->
-                    randomJokeBo.value = jokeBo
+                    randomJokeBo.postValue(jokeBo)
                 }
         }
     }

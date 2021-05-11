@@ -1,5 +1,6 @@
 package br.com.chabelman.data.repository
 
+import android.util.Log
 import br.com.chabelman.data.mapper.toJokeBO
 import br.com.chabelman.data.remote.JokesApi
 import br.com.chabelman.domain.model.JokeBo
@@ -14,6 +15,8 @@ class JokesRepository @Inject constructor(
     override fun getRandomJoke(category: String?): Observable<JokeBo> {
         return jokesApi.getRandomJoke(category).flatMap { jokeDto ->
             Observable.just(jokeDto.toJokeBO())
+        }.doOnError {
+            Log.e("chuck", it.message, it)
         }
     }
 }
