@@ -34,12 +34,20 @@ android {
 }
 
 dependencies {
+    implementation project(':domain')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
 
     testImplementation 'junit:junit:4.+'
 
+    //Dagger
     implementation "com.google.dagger:dagger:$dagger_dependecy_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_compiler_version"
+    compileOnly "javax.annotation:jsr250-api:1.0"
+
+    //Retrofit
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    api "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
 }
