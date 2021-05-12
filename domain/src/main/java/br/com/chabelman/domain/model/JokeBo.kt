@@ -5,5 +5,5 @@ data class JokeBo(
     val id: String,
     val url: String,
     val value: String,
-    val isFavorite: Boolean = false
+    var isFavorite: Boolean = false
 )

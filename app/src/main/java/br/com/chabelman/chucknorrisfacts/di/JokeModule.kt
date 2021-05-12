@@ -1,5 +1,7 @@
 package br.com.chabelman.chucknorrisfacts.di
 
+import br.com.chabelman.data.local.ChuckDatabase
+import br.com.chabelman.data.local.JokeDao
 import br.com.chabelman.data.remote.JokesApi
 import br.com.chabelman.data.repository.JokesRepository
 import br.com.chabelman.domain.repository.IJokesRepository
@@ -18,8 +20,13 @@ class JokeModule {
     }
 
     @Provides
-    fun provideJokeRepository(jokesApi: JokesApi): IJokesRepository {
-        return JokesRepository(jokesApi)
+    fun provideJokesDao(chuckDatabase: ChuckDatabase): JokeDao {
+        return chuckDatabase.jokeDao()
+    }
+
+    @Provides
+    fun provideJokeRepository(jokesApi: JokesApi, jokeDao: JokeDao): IJokesRepository {
+        return JokesRepository(jokesApi, jokeDao)
     }
 
     @Provides

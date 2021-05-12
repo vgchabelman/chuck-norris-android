@@ -2,6 +2,7 @@ package br.com.chabelman.chucknorrisfacts
 
 import android.app.Application
 import br.com.chabelman.chucknorrisfacts.di.AppComponent
+import br.com.chabelman.chucknorrisfacts.di.AppModule
 import br.com.chabelman.chucknorrisfacts.di.DaggerAppComponent
 import br.com.chabelman.chucknorrisfacts.di.DaggerHomeComponent
 import br.com.chabelman.chucknorrisfacts.di.DaggerJokeDetailComponent
@@ -22,7 +23,9 @@ class ChuckApplication : Application(),
     override fun onCreate() {
         super.onCreate()
 
-        appComponent = DaggerAppComponent.create()
+        appComponent = DaggerAppComponent.builder()
+            .appModule(AppModule(this))
+            .build()
         appComponent.inject(this)
     }
 
