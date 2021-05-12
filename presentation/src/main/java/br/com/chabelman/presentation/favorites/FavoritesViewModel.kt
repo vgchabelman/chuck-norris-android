@@ -1,4 +1,4 @@
-package br.com.chabelman.presentation.jokedetail
+package br.com.chabelman.presentation.favorites
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,25 +10,24 @@ import kotlinx.coroutines.launch
 import rx.schedulers.Schedulers
 import javax.inject.Inject
 
-class JokeDetailViewModel: ViewModel() {
+class FavoritesViewModel : ViewModel() {
     @Inject
-    lateinit var jokeInteractor: JokeInteractor
+    lateinit var interactor: JokeInteractor
+    val favoritesList: MutableLiveData<List<JokeBo>> by lazy { MutableLiveData() }
 
-    val joke: MutableLiveData<JokeBo> by lazy { MutableLiveData() }
-
-    fun getRandomJoke(category: String) {
-        viewModelScope.launch {
-            jokeInteractor.getRandomJoke(category)
+    fun updateFavoritesList() {
+        viewModelScope.launch(Dispatchers.IO) {
+            interactor.getFavoriteJokes()
                 .subscribeOn(Schedulers.io())
                 .subscribe {
-                    joke.postValue(it)
+                    favoritesList.postValue(it)
                 }
         }
     }
 
     fun saveFavoriteStatus(jokeBo: JokeBo) {
         viewModelScope.launch(Dispatchers.IO) {
-            jokeInteractor.changeJokeFavoriteStatus(jokeBo)
+            interactor.changeJokeFavoriteStatus(jokeBo)
         }
     }
 }

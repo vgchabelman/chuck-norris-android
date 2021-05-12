@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
+import br.com.chabelman.domain.model.JokeBo
 import br.com.chabelman.presentation.R
 import br.com.chabelman.presentation.databinding.FragmentJokeDetailBinding
 import coil.load
@@ -55,6 +56,7 @@ class JokeDetailFragment : Fragment(R.layout.fragment_joke_detail) {
             updateLinkUrl(joke.url)
             binding.factGroup.isVisible = true
             binding.detailLoading.isVisible = false
+            setupFavoriteButton(joke)
         }
     }
 
@@ -69,5 +71,13 @@ class JokeDetailFragment : Fragment(R.layout.fragment_joke_detail) {
         binding.factGroup.isVisible = false
         binding.detailLoading.isVisible = true
         viewModel.getRandomJoke(args.category)
+    }
+
+    private fun setupFavoriteButton(joke: JokeBo) {
+        binding.detailFavoriteButton.isSelected = joke.isFavorite
+        binding.detailFavoriteButton.setOnClickListener {
+            viewModel.saveFavoriteStatus(joke)
+            it.isSelected = !it.isSelected
+        }
     }
 }

@@ -2,10 +2,14 @@ package br.com.chabelman.chucknorrisfacts
 
 import android.app.Application
 import br.com.chabelman.chucknorrisfacts.di.AppComponent
+import br.com.chabelman.chucknorrisfacts.di.AppModule
 import br.com.chabelman.chucknorrisfacts.di.DaggerAppComponent
+import br.com.chabelman.chucknorrisfacts.di.DaggerFavoriteComponent
 import br.com.chabelman.chucknorrisfacts.di.DaggerHomeComponent
 import br.com.chabelman.chucknorrisfacts.di.DaggerJokeDetailComponent
 import br.com.chabelman.chucknorrisfacts.di.DaggerSearchComponent
+import br.com.chabelman.presentation.favorites.FavoriteComponentProvider
+import br.com.chabelman.presentation.favorites.FavoritesViewModel
 import br.com.chabelman.presentation.home.HomeComponentProvider
 import br.com.chabelman.presentation.home.HomeViewModel
 import br.com.chabelman.presentation.jokedetail.JokeDetailComponentProvider
@@ -14,6 +18,7 @@ import br.com.chabelman.presentation.search.SearchComponentProvider
 import br.com.chabelman.presentation.search.SearchViewModel
 
 class ChuckApplication : Application(),
+    FavoriteComponentProvider,
     HomeComponentProvider,
     JokeDetailComponentProvider,
     SearchComponentProvider {
@@ -22,7 +27,9 @@ class ChuckApplication : Application(),
     override fun onCreate() {
         super.onCreate()
 
-        appComponent = DaggerAppComponent.create()
+        appComponent = DaggerAppComponent.builder()
+            .appModule(AppModule(this))
+            .build()
         appComponent.inject(this)
     }
 
@@ -44,6 +51,14 @@ class ChuckApplication : Application(),
 
     override fun injectSearch(viewModel: SearchViewModel) {
         DaggerSearchComponent
+            .builder()
+            .appComponent(appComponent)
+            .build()
+            .inject(viewModel)
+    }
+
+    override fun injectFavoritesViewModel(viewModel: FavoritesViewModel) {
+        DaggerFavoriteComponent
             .builder()
             .appComponent(appComponent)
             .build()

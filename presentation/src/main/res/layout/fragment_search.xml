@@ -13,7 +13,6 @@
         android:background="@color/fuchsia_500"
         android:theme="@style/Platform.MaterialComponents"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_round_arrow_back_24"
         app:title="Search" />
 
     <SearchView
@@ -32,7 +31,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView"
-        tools:listitem="@layout/item_search_joke" />
+        tools:listitem="@layout/item_joke" />
 
     <TextView
         android:id="@+id/searchEmpty"

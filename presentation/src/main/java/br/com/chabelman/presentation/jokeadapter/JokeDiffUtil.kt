@@ -1,9 +1,9 @@
-package br.com.chabelman.presentation.search
+package br.com.chabelman.presentation.jokeadapter
 
 import androidx.recyclerview.widget.DiffUtil
 import br.com.chabelman.domain.model.JokeBo
 
-class SearchJokeDiffUtil(
+class JokeDiffUtil(
     private val oldList: List<JokeBo>,
     private val newList: List<JokeBo>
 ): DiffUtil.Callback() {

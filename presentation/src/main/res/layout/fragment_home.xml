@@ -15,21 +15,6 @@
         app:title="Chuck Norris Facts"
         app:titleTextColor="@android:color/white" />
 
-    <FrameLayout
-        android:id="@+id/homeSearchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:layout_constraintTop_toBottomOf="@+id/homeToolbar"
-        android:contentDescription="@string/open_search"
-        android:focusable="true">
-
-        <androidx.appcompat.widget.SearchView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#889c27b0" />
-    </FrameLayout>
-
     <ImageView
         android:id="@+id/homeChuckHead"
         android:layout_width="wrap_content"
@@ -39,14 +24,13 @@
         android:src="@drawable/chuck_head"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeSearchView" />
+        app:layout_constraintTop_toBottomOf="@+id/homeToolbar" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:minHeight="120dp"
         app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="4dp"
         app:cardElevation="8dp"
@@ -57,25 +41,54 @@
         app:strokeColor="#CCC"
         app:strokeWidth="1dp">
 
-        <ProgressBar
-            android:id="@+id/homeLoading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminateTint="@color/fuchsia_500"
-            tools:visibility="gone" />
-
-        <TextView
-            android:id="@+id/homeRandomJoke"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:minHeight="120dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="18sp"
-            android:textStyle="italic"
-            android:visibility="gone"
-            tools:text="Chuck Norris has six assholes. And even he will need them all to shit enough corn &amp; peanuts infused feces on the U.S. House of Representatives."
-            tools:visibility="visible" />
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/homeLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:indeterminateTint="@color/fuchsia_500"
+                tools:visibility="gone" />
+
+            <TextView
+                android:id="@+id/homeRandomJoke"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/homeFavoriteButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Chuck Norris has six assholes. And even he will need them all to shit enough corn &amp; peanuts infused feces on the U.S. House of Representatives."
+                tools:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/homeFavoriteButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="?selectableItemBackground"
+                android:contentDescription="@string/favorite_button"
+                android:src="@drawable/btn_favorite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Group
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/homeJokeCardGroup"
+                app:constraint_referenced_ids="homeRandomJoke, homeFavoriteButton" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView

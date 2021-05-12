@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import br.com.chabelman.domain.model.JokeBo
 import br.com.chabelman.domain.usecases.CategoryInteractor
 import br.com.chabelman.domain.usecases.JokeInteractor
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import rx.schedulers.Schedulers
 import javax.inject.Inject
@@ -41,6 +43,12 @@ class HomeViewModel : ViewModel() {
                 .subscribe {
                     categoryList.postValue(it)
                 }
+        }
+    }
+
+    fun saveFavoriteStatus(jokeBo: JokeBo) {
+        viewModelScope.launch(Dispatchers.IO) {
+            jokeInteractor.changeJokeFavoriteStatus(jokeBo)
         }
     }
 }
