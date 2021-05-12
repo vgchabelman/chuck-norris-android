@@ -12,9 +12,8 @@
         android:layout_height="wrap_content"
         android:background="#9c27b0"
         app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/Platform.MaterialComponents"
         app:navigationIcon="@drawable/ic_round_arrow_back_24"
-        app:navigationIconTint="@android:color/white"
-        app:titleTextColor="@android:color/white"
         tools:title="Fact #49282920" />
 
     <ImageView
@@ -79,7 +78,7 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="More info"
+                android:text="@string/more_info"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailFact" />
 
@@ -109,9 +108,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="Load next"
-        app:backgroundTint="#9c27b0"
+        android:text="@string/load_next"
         app:icon="@drawable/ic_round_refresh_24"
+        android:textColor="@android:color/white"
+        app:iconTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

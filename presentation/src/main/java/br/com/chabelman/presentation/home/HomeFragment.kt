@@ -2,6 +2,7 @@ package br.com.chabelman.presentation.home
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +14,7 @@ import javax.inject.Inject
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -29,11 +31,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onResume() {
         super.onResume()
 
+        binding.homeRandomJoke.isVisible = false
+        binding.homeLoading.isVisible = true
         viewModel.getRandomJoke()
     }
 
     private fun observeRandomJoke() {
         viewModel.randomJokeBo.observe(viewLifecycleOwner) {
+            binding.homeRandomJoke.isVisible = true
+            binding.homeLoading.isVisible = false
             binding.homeRandomJoke.text = it.value
         }
     }

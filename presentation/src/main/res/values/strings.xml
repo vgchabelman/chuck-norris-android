@@ -2,4 +2,6 @@
 <resources>
     <string formatted="false" name="detailToolbar">Fact #%d</string>
     <string formatted="false" name="detailFact">%s fact:</string>
+    <string name="load_next">Load next</string>
+    <string name="more_info">More info</string>
 </resources>
