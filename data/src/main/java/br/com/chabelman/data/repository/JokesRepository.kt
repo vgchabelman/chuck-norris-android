@@ -34,7 +34,13 @@ class JokesRepository @Inject constructor(
     override fun searchJokes(query: String): Observable<List<JokeBo>> {
         return jokesApi.searchJokes(query).flatMap { searchResult ->
             Observable.just(
-                searchResult.result.map { it.toJokeBO() }
+                searchResult.result.map {
+                    val jokeBo = it.toJokeBO()
+                    if (jokeDao.getJoke(jokeBo.id) != null) {
+                        jokeBo.isFavorite = true
+                    }
+                    jokeBo
+                }
             )
         }
     }

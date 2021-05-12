@@ -16,7 +16,10 @@ import br.com.chabelman.presentation.extension.hideKeyboard
 class SearchFragment : Fragment(R.layout.fragment_search) {
     private val viewModel: SearchViewModel by viewModels()
     private lateinit var binding: FragmentSearchBinding
-    private val adapter = SearchAdapter()
+
+    private val adapter = SearchAdapter {
+        viewModel.saveFavoriteStatus(it)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

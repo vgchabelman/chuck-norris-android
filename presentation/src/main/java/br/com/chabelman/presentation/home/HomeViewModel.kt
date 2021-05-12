@@ -31,11 +31,7 @@ class HomeViewModel : ViewModel() {
                     Log.e("chuckError", it.message, it)
                 }
                 .subscribe { jokeBo ->
-                    jokeInteractor.isJokeFavorite(jokeBo)
-                        .subscribe {
-                            jokeBo.isFavorite = it
-                            randomJokeBo.postValue(jokeBo)
-                        }
+                    randomJokeBo.postValue(jokeBo)
                 }
         }
     }

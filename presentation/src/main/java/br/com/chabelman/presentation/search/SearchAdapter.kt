@@ -9,7 +9,9 @@ import br.com.chabelman.domain.model.JokeBo
 import br.com.chabelman.presentation.R
 import br.com.chabelman.presentation.databinding.ItemSearchJokeBinding
 
-class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class SearchAdapter(
+    val favoriteListener: (joke: JokeBo) -> Unit
+) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     private val jokeList: MutableList<JokeBo> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -19,7 +21,13 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.itemSearchJoke.text = jokeList[position].value
+        val joke = jokeList[position]
+        holder.binding.itemSearchJoke.text = joke.value
+        holder.binding.itemSearchFavoriteButton.isSelected = joke.isFavorite
+        holder.binding.itemSearchFavoriteButton.setOnClickListener {
+            favoriteListener.invoke(joke)
+            it.isSelected = !it.isSelected
+        }
     }
 
     override fun getItemCount(): Int = jokeList.size

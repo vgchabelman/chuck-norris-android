@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/fuchsia_500"
-        app:layout_constraintTop_toTopOf="parent"
         android:theme="@style/Platform.MaterialComponents"
+        app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_round_arrow_back_24"
         tools:title="Fact #49282920" />
 
@@ -62,15 +62,27 @@
 
             <TextView
                 android:id="@+id/detailFact"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:paddingBottom="8dp"
                 android:textSize="18sp"
                 android:textStyle="italic"
+                app:layout_constraintEnd_toStartOf="@+id/detailFavoriteButton"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailCategory"
                 tools:text="Chuck Norris once had a heckler call him Chuckie. Chuck kicked him so hard he was arrested for speeding 2 blocks away." />
+
+            <ImageButton
+                android:id="@+id/detailFavoriteButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?selectableItemBackground"
+                android:contentDescription="@string/favorite_button"
+                android:src="@drawable/btn_favorite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detailCategory" />
 
             <Button
                 android:id="@+id/detailMoreInfoButton"
@@ -86,7 +98,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:visibility="gone"
-                app:constraint_referenced_ids="detailCategory, detailFact, detailMoreInfoButton"
+                app:constraint_referenced_ids="detailCategory, detailFact,
+                detailMoreInfoButton, detailFavoriteButton"
                 tools:visibility="visible" />
 
             <ProgressBar
@@ -108,8 +121,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:text="@string/load_next"
-        app:icon="@drawable/ic_round_refresh_24"
         android:textColor="@android:color/white"
+        app:icon="@drawable/ic_round_refresh_24"
         app:iconTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
