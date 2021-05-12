@@ -5,6 +5,8 @@ import br.com.chabelman.data.local.ChuckDatabase
 import br.com.chabelman.data.local.JokeDao
 import br.com.chabelman.data.local.JokeEntity
 import br.com.chabelman.data.mapper.toJokeBO
+import br.com.chabelman.data.mapper.toJokeBo
+import br.com.chabelman.data.mapper.toJokeEntity
 import br.com.chabelman.data.remote.JokesApi
 import br.com.chabelman.domain.model.JokeBo
 import br.com.chabelman.domain.repository.IJokesRepository
@@ -14,7 +16,7 @@ import javax.inject.Inject
 class JokesRepository @Inject constructor(
     private val jokesApi: JokesApi,
     private val jokeDao: JokeDao
-): IJokesRepository {
+) : IJokesRepository {
 
     override fun getRandomJoke(category: String?): Observable<JokeBo> {
         return jokesApi.getRandomJoke(category).flatMap { jokeDto ->
@@ -35,5 +37,27 @@ class JokesRepository @Inject constructor(
                 searchResult.result.map { it.toJokeBO() }
             )
         }
+    }
+
+    override fun favoriteJoke(jokeBo: JokeBo, category: String?) {
+        jokeDao.insert(jokeBo.toJokeEntity(category))
+    }
+
+    override fun unfavoriteJoke(jokeBo: JokeBo) {
+        jokeDao.delete(jokeBo.toJokeEntity())
+    }
+
+    override fun getSavedJokes(): Observable<List<JokeBo>> {
+        return Observable.just(
+            jokeDao.getAllJoke().map {
+                it.toJokeBo()
+            }
+        )
+    }
+
+    override fun getSavedJoke(id: String): Observable<JokeBo?> {
+        return Observable.just(
+            jokeDao.getJoke(id)?.toJokeBo()
+        )
     }
 }

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import br.com.chabelman.domain.model.JokeBo
 import br.com.chabelman.presentation.R
 import br.com.chabelman.presentation.databinding.FragmentHomeBinding
 import javax.inject.Inject
@@ -34,16 +35,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onResume() {
         super.onResume()
 
-        binding.homeRandomJoke.isVisible = false
+        binding.homeJokeCardGroup.isVisible = false
         binding.homeLoading.isVisible = true
         viewModel.getRandomJoke()
     }
 
     private fun observeRandomJoke() {
         viewModel.randomJokeBo.observe(viewLifecycleOwner) {
-            binding.homeRandomJoke.isVisible = true
-            binding.homeLoading.isVisible = false
             binding.homeRandomJoke.text = it.value
+            setupFavoriteButton(it)
+            binding.homeJokeCardGroup.isVisible = true
+            binding.homeLoading.isVisible = false
         }
     }
 
@@ -57,5 +59,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             binding.homeCategoryList.adapter = adapter
         }
         viewModel.updateCategoryList()
+    }
+
+    private fun setupFavoriteButton(joke: JokeBo) {
+        binding.homeFavoriteButton.isSelected = joke.isFavorite
+        binding.homeFavoriteButton.setOnClickListener {
+            viewModel.saveFavoriteStatus(joke)
+            it.isSelected = !it.isSelected
+        }
     }
 }
