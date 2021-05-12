@@ -12,21 +12,23 @@
         android:layout_height="wrap_content"
         android:background="#9c27b0"
         app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_round_arrow_back_24"
+        app:navigationIconTint="@android:color/white"
         app:titleTextColor="@android:color/white"
         tools:title="Fact #49282920" />
 
     <ImageView
-        android:id="@+id/homeChuckHead"
+        android:id="@+id/detailIcon"
         android:layout_width="wrap_content"
         android:layout_height="160dp"
         android:layout_marginTop="16dp"
+        android:src="@drawable/ic_round_image_48"
         app:layout_constraintBottom_toTopOf="@+id/detailFactCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/detailToolbar"
         app:layout_constraintVertical_chainStyle="packed"
-        tools:ignore="ContentDescription"
-        tools:src="@drawable/chuck_head" />
+        tools:ignore="ContentDescription" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/detailFactCard"
@@ -37,17 +39,18 @@
         app:cardCornerRadius="4dp"
         app:cardElevation="8dp"
         app:contentPadding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/materialButton"
+        app:layout_constraintBottom_toTopOf="@+id/detailUpdateButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeChuckHead"
+        app:layout_constraintTop_toBottomOf="@+id/detailIcon"
         app:strokeColor="#CCC"
         app:strokeWidth="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:animateLayoutChanges="true">
+            android:animateLayoutChanges="true"
+            android:minHeight="140dp">
 
             <TextView
                 android:id="@+id/detailCategory"
@@ -79,19 +82,37 @@
                 android:text="More info"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailFact" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/factGroup"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:constraint_referenced_ids="detailCategory, detailFact, detailMoreInfoButton"
+                tools:visibility="visible" />
+
+            <ProgressBar
+                android:id="@+id/detailLoading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="#9c27b0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
+        android:id="@+id/detailUpdateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:text="Load next"
-        app:icon="@drawable/ic_round_refresh_24"
         app:backgroundTint="#9c27b0"
+        app:icon="@drawable/ic_round_refresh_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

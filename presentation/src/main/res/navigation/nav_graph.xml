@@ -9,5 +9,22 @@
         android:id="@+id/homeFragment"
         android:name="br.com.chabelman.presentation.home.HomeFragment"
         tools:layout="@layout/fragment_home"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_jokeDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/jokeDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/jokeDetailFragment"
+        tools:layout="@layout/fragment_joke_detail"
+        android:name="br.com.chabelman.presentation.jokedetail.JokeDetailFragment"
+        android:label="JokeDetailFragment" >
+        <argument
+            android:name="category"
+            app:argType="string" />
+    </fragment>
 </navigation>

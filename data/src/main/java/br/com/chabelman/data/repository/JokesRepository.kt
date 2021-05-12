@@ -16,7 +16,7 @@ class JokesRepository @Inject constructor(
         return jokesApi.getRandomJoke(category).flatMap { jokeDto ->
             Observable.just(jokeDto.toJokeBO())
         }.doOnError {
-            Log.e("chuck", it.message, it)
+            Log.e("chuckError", it.message, it)
         }
     }
 }

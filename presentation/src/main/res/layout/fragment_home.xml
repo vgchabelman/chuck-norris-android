@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fafafa"
     android:animateLayoutChanges="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:background="#fafafa">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/homeToolbar"
-        android:background="#9c27b0"
-        app:title="Chuck Norris Facts"
-        app:titleTextColor="@android:color/white"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="#9c27b0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Chuck Norris Facts"
+        app:titleTextColor="@android:color/white" />
 
     <ImageView
         android:id="@+id/homeChuckHead"
-        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
-        android:layout_height="250dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Foto do rosto do Chuck Norris"
         android:src="@drawable/chuck_head"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/homeToolbar"
-        android:contentDescription="Foto do rosto do Chuck Norris" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeToolbar" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
@@ -55,12 +55,13 @@
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/homeCategoryList"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_home_category"
-        android:layout_height="0dp"
-        tools:itemCount="10"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        tools:itemCount="10"
+        tools:listitem="@layout/item_home_category" />
 </androidx.constraintlayout.widget.ConstraintLayout>
