@@ -15,21 +15,6 @@
         app:title="Chuck Norris Facts"
         app:titleTextColor="@android:color/white" />
 
-    <FrameLayout
-        android:id="@+id/homeSearchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:layout_constraintTop_toBottomOf="@+id/homeToolbar"
-        android:contentDescription="@string/open_search"
-        android:focusable="true">
-
-        <androidx.appcompat.widget.SearchView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#889c27b0" />
-    </FrameLayout>
-
     <ImageView
         android:id="@+id/homeChuckHead"
         android:layout_width="wrap_content"
@@ -39,7 +24,7 @@
         android:src="@drawable/chuck_head"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeSearchView" />
+        app:layout_constraintTop_toBottomOf="@+id/homeToolbar" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"

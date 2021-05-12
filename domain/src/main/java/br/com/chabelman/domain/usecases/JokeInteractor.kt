@@ -30,4 +30,8 @@ class JokeInteractor @Inject constructor(
                 Observable.just(it != null)
             }
     }
+
+    fun getFavoriteJokes(): Observable<List<JokeBo>> {
+        return jokeRepository.getSavedJokes()
+    }
 }

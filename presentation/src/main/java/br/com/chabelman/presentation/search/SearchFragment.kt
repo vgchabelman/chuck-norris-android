@@ -12,12 +12,13 @@ import androidx.navigation.ui.setupWithNavController
 import br.com.chabelman.presentation.R
 import br.com.chabelman.presentation.databinding.FragmentSearchBinding
 import br.com.chabelman.presentation.extension.hideKeyboard
+import br.com.chabelman.presentation.jokeadapter.JokeAdapter
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
     private val viewModel: SearchViewModel by viewModels()
     private lateinit var binding: FragmentSearchBinding
 
-    private val adapter = SearchAdapter {
+    private val adapter = JokeAdapter {
         viewModel.saveFavoriteStatus(it)
     }
 
@@ -29,7 +30,6 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         observeJokeList()
         setupSearchQuery()
-        binding.searchToolbar.setupWithNavController(findNavController())
         binding.searchList.adapter = adapter
     }
 

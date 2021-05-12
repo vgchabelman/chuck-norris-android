@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
     </fragment>
     <fragment
         android:id="@+id/jokeDetailFragment"
@@ -35,4 +38,9 @@
         android:name="br.com.chabelman.presentation.search.SearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        tools:layout="@layout/fragment_favorites"
+        android:name="br.com.chabelman.presentation.favorites.FavoritesFragment"
+        android:label="FavoritesFragment" />
 </navigation>
