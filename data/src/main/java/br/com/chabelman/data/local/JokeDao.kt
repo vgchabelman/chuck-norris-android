@@ -19,4 +19,7 @@ interface JokeDao {
 
     @Query("SELECT * FROM JokeEntity")
     fun getAllJoke(): List<JokeEntity>
+
+    @Query("SELECT * FROM JokeEntity WHERE value LIKE '%' || :query || '%'")
+    fun searchJoke(query: String): List<JokeEntity>
 }
