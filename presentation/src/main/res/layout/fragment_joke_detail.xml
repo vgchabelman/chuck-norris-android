@@ -3,14 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#fafafa">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/detailToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#9c27b0"
+        android:background="@color/fuchsia_500"
         app:layout_constraintTop_toTopOf="parent"
         android:theme="@style/Platform.MaterialComponents"
         app:navigationIcon="@drawable/ic_round_arrow_back_24"
@@ -94,7 +93,7 @@
                 android:id="@+id/detailLoading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:indeterminateTint="#9c27b0"
+                android:indeterminateTint="@color/fuchsia_500"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

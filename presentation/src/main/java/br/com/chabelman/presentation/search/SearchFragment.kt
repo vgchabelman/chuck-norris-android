@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -29,8 +30,15 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         binding.searchList.adapter = adapter
     }
 
+    override fun onPause() {
+        super.onPause()
+
+        hideKeyboard()
+    }
+
     private fun observeJokeList() {
         viewModel.jokeList.observe(viewLifecycleOwner) {
+            binding.searchEmpty.isVisible = false
             adapter.updateJokeList(it)
         }
     }
@@ -64,7 +72,11 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun doSearch(query: String?) {
-        query ?: return
+        if (query.isNullOrBlank()) {
+            binding.searchEmpty.isVisible = true
+            adapter.updateJokeList(emptyList())
+            return
+        }
 
         viewModel.searchJokes(query)
     }

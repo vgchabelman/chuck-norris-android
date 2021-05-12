@@ -2,11 +2,11 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#9c27b0</item>
+        <item name="colorPrimary">@color/fuchsia_500</item>
         <item name="colorPrimaryVariant">#d05ce3</item>
         <item name="colorOnPrimary">@android:color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#9c27b0</item>
+        <item name="colorSecondary">@color/fuchsia_500</item>
         <item name="colorSecondaryVariant">#d05ce3</item>
         <item name="colorOnSecondary">@android:color/white</item>
         <!-- Status bar color. -->

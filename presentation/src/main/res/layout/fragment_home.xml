@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:animateLayoutChanges="true"
-    android:background="#fafafa">
+    android:animateLayoutChanges="true">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/homeToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#9c27b0"
+        android:background="@color/fuchsia_500"
         app:layout_constraintTop_toTopOf="parent"
         app:title="Chuck Norris Facts"
         app:titleTextColor="@android:color/white" />
@@ -63,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:indeterminateTint="#9c27b0"
+            android:indeterminateTint="@color/fuchsia_500"
             tools:visibility="gone" />
 
         <TextView
