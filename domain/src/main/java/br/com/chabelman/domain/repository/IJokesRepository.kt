@@ -6,4 +6,6 @@ import rx.Observable
 interface IJokesRepository {
 
     fun getRandomJoke(category: String?): Observable<JokeBo>
+
+    fun searchJokes(query: String): Observable<List<JokeBo>>
 }

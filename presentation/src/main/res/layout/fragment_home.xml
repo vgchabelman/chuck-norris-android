@@ -16,16 +16,31 @@
         app:title="Chuck Norris Facts"
         app:titleTextColor="@android:color/white" />
 
+    <FrameLayout
+        android:id="@+id/homeSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/homeToolbar"
+        android:contentDescription="@string/open_search"
+        android:focusable="true">
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#889c27b0" />
+    </FrameLayout>
+
     <ImageView
         android:id="@+id/homeChuckHead"
         android:layout_width="wrap_content"
         android:layout_height="160dp"
         android:layout_marginTop="16dp"
-        android:contentDescription="Foto do rosto do Chuck Norris"
+        android:contentDescription="@string/chuck_norris_description"
         android:src="@drawable/chuck_head"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/homeToolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/homeSearchView" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
@@ -48,8 +63,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            tools:visibility="gone"
-            android:indeterminateTint="#9c27b0" />
+            android:indeterminateTint="#9c27b0"
+            tools:visibility="gone" />
 
         <TextView
             android:id="@+id/homeRandomJoke"
@@ -60,8 +75,8 @@
             android:textSize="18sp"
             android:textStyle="italic"
             android:visibility="gone"
-            tools:visibility="visible"
-            tools:text="Chuck Norris has six assholes. And even he will need them all to shit enough corn &amp; peanuts infused feces on the U.S. House of Representatives." />
+            tools:text="Chuck Norris has six assholes. And even he will need them all to shit enough corn &amp; peanuts infused feces on the U.S. House of Representatives."
+            tools:visibility="visible" />
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
