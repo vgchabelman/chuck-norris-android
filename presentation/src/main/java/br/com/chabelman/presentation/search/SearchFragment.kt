@@ -1,6 +1,7 @@
 package br.com.chabelman.presentation.search
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import br.com.chabelman.presentation.extension.hideKeyboard
 class SearchFragment : Fragment(R.layout.fragment_search) {
     private val viewModel: SearchViewModel by viewModels()
     private lateinit var binding: FragmentSearchBinding
+    private val adapter = SearchAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,26 +26,46 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         observeJokeList()
         setupSearchQuery()
         binding.searchToolbar.setupWithNavController(findNavController())
+        binding.searchList.adapter = adapter
     }
 
     private fun observeJokeList() {
         viewModel.jokeList.observe(viewLifecycleOwner) {
-            val adapter = SearchAdapter(it)
-            binding.searchList.adapter = adapter
+            adapter.updateJokeList(it)
         }
     }
 
     private fun setupSearchQuery() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            var debounceTimer: CountDownTimer? = null
+
             override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let { viewModel.searchJokes(it) }
+                debounceTimer?.cancel()
+                doSearch(query)
                 hideKeyboard()
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                debounceTimer?.cancel()
+                debounceTimer = object : CountDownTimer(500, 200) {
+                    override fun onTick(millisUntilFinished: Long) { //noop
+                    }
+
+                    override fun onFinish() {
+                        doSearch(newText)
+                    }
+                }
+                debounceTimer?.start()
+
                 return false
             }
         })
+    }
+
+    private fun doSearch(query: String?) {
+        query ?: return
+
+        viewModel.searchJokes(query)
     }
 }
