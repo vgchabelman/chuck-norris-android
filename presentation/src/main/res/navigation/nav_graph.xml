@@ -8,23 +8,31 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="br.com.chabelman.presentation.home.HomeFragment"
-        tools:layout="@layout/fragment_home"
-        android:label="HomeFragment" >
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_jokeDetailFragment"
+            app:destination="@id/jokeDetailFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:destination="@id/jokeDetailFragment" />
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/jokeDetailFragment"
-        tools:layout="@layout/fragment_joke_detail"
         android:name="br.com.chabelman.presentation.jokedetail.JokeDetailFragment"
-        android:label="JokeDetailFragment" >
+        android:label="JokeDetailFragment"
+        tools:layout="@layout/fragment_joke_detail">
         <argument
             android:name="category"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="br.com.chabelman.presentation.search.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search" />
 </navigation>

@@ -26,6 +26,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         observeRandomJoke()
         observeCategoryList()
+        binding.homeSearchView.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSearchFragment())
+        }
     }
 
     override fun onResume() {
