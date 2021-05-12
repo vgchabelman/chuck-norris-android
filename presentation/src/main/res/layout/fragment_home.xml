@@ -1,53 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fafafa"
     android:animateLayoutChanges="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:background="#fafafa">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/homeToolbar"
-        android:background="#9c27b0"
-        app:title="Chuck Norris Facts"
-        app:titleTextColor="@android:color/white"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="#9c27b0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Chuck Norris Facts"
+        app:titleTextColor="@android:color/white" />
 
     <ImageView
         android:id="@+id/homeChuckHead"
-        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
-        android:layout_height="250dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Foto do rosto do Chuck Norris"
         android:src="@drawable/chuck_head"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/homeToolbar"
-        android:contentDescription="Foto do rosto do Chuck Norris" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/homeToolbar" />
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:minHeight="120dp"
         app:cardBackgroundColor="@android:color/white"
-        app:cardElevation="8dp"
         app:cardCornerRadius="4dp"
-        app:strokeColor="#CCC"
-        app:strokeWidth="1dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:cardElevation="8dp"
+        app:contentPadding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/homeChuckHead"
-        android:layout_margin="16dp">
+        app:strokeColor="#CCC"
+        app:strokeWidth="1dp">
+
+        <ProgressBar
+            android:id="@+id/homeLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            tools:visibility="gone"
+            android:indeterminateTint="#9c27b0" />
 
         <TextView
             android:id="@+id/homeRandomJoke"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="8dp"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:textSize="18sp"
             android:textStyle="italic"
-            android:gravity="center"
-            tools:text="Chuck Norris has six assholes. And even he will need them all to shit enough corn &amp; peanuts infused feces on the U.S. House of Representatives."/>
+            android:visibility="gone"
+            tools:visibility="visible"
+            tools:text="Chuck Norris has six assholes. And even he will need them all to shit enough corn &amp; peanuts infused feces on the U.S. House of Representatives." />
     </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/homeCategoryList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:fadingEdge="vertical"
+        android:fadingEdgeLength="4dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        tools:itemCount="10"
+        tools:listitem="@layout/item_home_category" />
 </androidx.constraintlayout.widget.ConstraintLayout>

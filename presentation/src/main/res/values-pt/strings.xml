@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string formatted="false" name="detailToolbar">Fato #%d</string>
+    <string formatted="false" name="detailFact">Fato de "%s":</string>
+    <string name="load_next">Carregar próximo</string>
+    <string name="more_info">Mais informações</string>
+</resources>

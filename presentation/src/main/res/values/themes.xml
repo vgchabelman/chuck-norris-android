@@ -1,14 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.ChuckNorrisFacts" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#9c27b0</item>
         <item name="colorPrimaryVariant">#d05ce3</item>
-        <item name="colorOnPrimary">#6a0080</item>
+        <item name="colorOnPrimary">@android:color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#7b1fa2</item>
-        <item name="colorSecondaryVariant">#ae52d4</item>
-        <item name="colorOnSecondary">#4a0072</item>
+        <item name="colorSecondary">#9c27b0</item>
+        <item name="colorSecondaryVariant">#d05ce3</item>
+        <item name="colorOnSecondary">@android:color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">#6a0080</item>
         <!-- Customize your theme here. -->
