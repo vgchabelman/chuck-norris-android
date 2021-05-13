@@ -13,4 +13,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">#6a0080</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="background">@drawable/bg_splash</item>
+        <item name="android:background">@drawable/bg_splash</item>
+    </style>
 </resources>

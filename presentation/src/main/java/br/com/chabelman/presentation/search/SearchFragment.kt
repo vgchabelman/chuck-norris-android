@@ -7,8 +7,6 @@ import android.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupWithNavController
 import br.com.chabelman.presentation.R
 import br.com.chabelman.presentation.databinding.FragmentSearchBinding
 import br.com.chabelman.presentation.extension.hideKeyboard
@@ -42,6 +40,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private fun observeJokeList() {
         viewModel.jokeList.observe(viewLifecycleOwner) {
             binding.searchEmpty.isVisible = false
+            binding.searchLoading.hide()
             adapter.updateJokeList(it)
         }
     }
@@ -81,6 +80,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             return
         }
 
+        binding.searchLoading.show()
         viewModel.searchJokes(query)
     }
 }

@@ -13,7 +13,7 @@
         android:background="@color/fuchsia_500"
         android:theme="@style/Platform.MaterialComponents"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Search" />
+        app:title="@string/search" />
 
     <SearchView
         android:id="@+id/searchView"
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:background="#889c27b0"
         android:iconifiedByDefault="false"
-        android:queryHint="Search keyword"
+        android:queryHint="@string/search_hint"
         app:layout_constraintTop_toBottomOf="@id/searchToolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -33,6 +33,18 @@
         app:layout_constraintTop_toBottomOf="@+id/searchView"
         tools:listitem="@layout/item_joke" />
 
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/searchLoading"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/fuchsia_500"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/searchEmpty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"/>
+
     <TextView
         android:id="@+id/searchEmpty"
         android:layout_width="wrap_content"
@@ -40,10 +52,11 @@
         android:text="@string/start_typing_to_see_results_here"
         android:textColor="@color/fuchsia_500"
         android:textSize="24sp"
+        android:gravity="center"
         app:drawableTopCompat="@drawable/ic_baseline_search_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView"
-        tools:visibility="gone" />
+        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

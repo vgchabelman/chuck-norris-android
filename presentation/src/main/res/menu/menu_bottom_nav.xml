@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/ic_round_image_48"
+        android:icon="@drawable/ic_round_error_outline_24"
         android:title="@string/home" />
 
     <item

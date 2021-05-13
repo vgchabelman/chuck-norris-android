@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@color/fuchsia_500"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Chuck Norris Facts"
+        app:title="@string/home_title"
         app:titleTextColor="@android:color/white" />
 
     <ImageView
