@@ -17,4 +17,7 @@ dependencies {
     implementation "com.google.dagger:dagger:$dagger_dependecy_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_compiler_version"
     compileOnly "javax.annotation:jsr250-api:1.0"
+
+    // Testing
+    testImplementation 'junit:junit:4.+'
 }
