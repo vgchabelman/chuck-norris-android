@@ -24,13 +24,6 @@ class JokeInteractor @Inject constructor(
         }
     }
 
-    fun isJokeFavorite(joke: JokeBo): Observable<Boolean> {
-        return jokeRepository.getSavedJoke(joke.id)
-            .flatMap {
-                Observable.just(it != null)
-            }
-    }
-
     fun getFavoriteJokes(): Observable<List<JokeBo>> {
         return jokeRepository.getSavedJokes()
     }
