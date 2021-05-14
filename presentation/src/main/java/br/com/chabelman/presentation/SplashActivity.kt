@@ -14,6 +14,7 @@ class SplashActivity : AppCompatActivity() {
             if (isFinishing) return
             val intent = Intent(baseContext, BaseActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
